@@ -1,5 +1,9 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: linear-gradient(90deg, #042a52, #6b6b6e, #0e386e);
+  background: linear-gradient(90deg, #000000, #232325, #0b1018);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   animation: animated-gradient 5s infinite alternate;
@@ -17,10 +21,11 @@ body {
 
 /* Header */
 header {
-  background-color: rgba(4, 42, 82, 0.9);
+  background-color: rgba(79, 79, 80, 0.9);
   border-radius: 60px;
-  top: 0;
+  top: 16px;
   position: sticky;
+  z-index: 10;
 }
 nav {
   top: 10px;
@@ -82,16 +87,16 @@ nav ul li a:focus {
 
 .info h1 {
   font-size: 60px;
-  color: white;
+  color: rgb(206, 206, 206);
   margin: 0;
-  text-shadow: 4px 4px 3px rgb(0, 0, 0);
+  text-shadow: 4px 4px 3px rgb(114, 114, 114);
   position: absolute;
   top: 200px;
   animation: animation-title 2s;
 }
 
 .name {
-  color: rgb(38, 51, 105);
+  color: rgb(0, 0, 0);
 }
 
 @keyframes animation-title {
@@ -109,7 +114,8 @@ nav ul li a:focus {
 
 .info p {
   margin: 0;
-  font-size: 20px;
+  font-size: 25px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   position: absolute;
   top: 700px;
@@ -117,7 +123,7 @@ nav ul li a:focus {
   white-space: nowrap;
   border-right: 2px solid;
   width: 19ch;
-  animation: typing 2s steps(19), blink 0.5s infinite step-end alternate;
+  animation: typing 3s steps(19), blink 0.5s infinite step-end alternate;
   overflow: hidden;
 }
 
@@ -141,7 +147,54 @@ nav ul li a:focus {
 }
 .logo {
   width: 300px;
-  border-radius: 100px;
+  border-radius: 100%;
+}
+
+.apps {
+  width: 40px;
+  height: 100px;
+  border: solid white 2px;
+  position: absolute;
+  left: 0;
+}
+
+.github {
+  border-bottom: solid white;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.github:hover {
+  background-color: black;
+  transition: 0.2s;
+}
+
+.github img {
+  width: 30px;
+}
+
+.linkedin {
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.linkedin img {
+  width: 30px;
+}
+
+.linkedin:hover {
+  background-color: black;
+  transition: 0.2s;
+}
+
+.sobre-mi {
+  height: 300px;
+  width: 100%;
+  background-color: #222222;
 }
 
 .sobre-mi h2 {
