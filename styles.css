@@ -2,8 +2,16 @@ html {
   scroll-behavior: smooth;
 }
 
+#myInfo,
+#myexperience,
+#proyectos,
+#technologies,
+#contacto {
+  scroll-margin-top: 100px;
+}
+
 body {
-  background: linear-gradient(90deg, #000000, #232325, #0b1018);
+  background: linear-gradient(90deg, #054e26, #151518, #054e26);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   animation: animated-gradient 5s infinite alternate;
@@ -21,11 +29,13 @@ body {
 
 /* Header */
 header {
-  background-color: rgba(79, 79, 80, 0.9);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 60px;
   top: 16px;
   position: sticky;
   z-index: 10;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 nav {
   top: 10px;
@@ -40,8 +50,10 @@ nav ul {
 }
 
 nav ul li a {
+  font-size: 14px;
   text-decoration: none;
   color: rgb(214, 214, 214);
+  font-family: "Source Code Pro", monospace;
 }
 
 nav ul li a:hover {
@@ -85,18 +97,24 @@ nav ul li a:focus {
   overflow: hidden;
 }
 
-.info h1 {
-  font-size: 60px;
-  color: rgb(206, 206, 206);
-  margin: 0;
-  text-shadow: 4px 4px 3px rgb(114, 114, 114);
-  position: absolute;
-  top: 200px;
-  animation: animation-title 2s;
+.containerinfo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 900px;
+  height: 900px;
 }
 
-.name {
-  color: rgb(0, 0, 0);
+.info h1 {
+  font-size: 50px;
+  font-family: "Source Code Pro", monospace;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  text-shadow: 3px 3px 2px rgb(0, 0, 0);
+  position: absolute;
+  top: 100px;
+  animation: animation-title 2s;
 }
 
 @keyframes animation-title {
@@ -115,15 +133,15 @@ nav ul li a:focus {
 .info p {
   margin: 0;
   font-size: 25px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Source Code Pro", monospace;
   color: white;
   position: absolute;
-  top: 700px;
+  top: 650px;
   display: block;
   white-space: nowrap;
   border-right: 2px solid;
-  width: 19ch;
-  animation: typing 3s steps(19), blink 0.5s infinite step-end alternate;
+  width: 22ch;
+  animation: typing 3s steps(22), blink 0.5s infinite step-end alternate;
   overflow: hidden;
 }
 
@@ -139,6 +157,31 @@ nav ul li a:focus {
   }
 }
 
+.button-cv {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 750px;
+  font-family: "Source Code Pro", monospace;
+  background: transparent;
+  color: white;
+  padding: 12px 24px;
+  border: white solid 2px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  gap: 2px;
+}
+
+.button-cv:hover {
+  background: #161616;
+}
+
+.button-cv img {
+  width: 20px;
+}
+
 .logo-container {
   display: flex;
   justify-content: center;
@@ -148,6 +191,7 @@ nav ul li a:focus {
 .logo {
   width: 300px;
   border-radius: 100%;
+  box-shadow: 2px 6px 12px rgb(0, 0, 0);
 }
 
 .apps {
@@ -156,6 +200,7 @@ nav ul li a:focus {
   border: solid white 2px;
   position: absolute;
   left: 0;
+  top: 500px;
 }
 
 .github {
@@ -191,18 +236,545 @@ nav ul li a:focus {
   transition: 0.2s;
 }
 
+.container-aboutme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .sobre-mi {
   height: 300px;
-  width: 100%;
-  background-color: #222222;
+  width: 600px;
 }
 
 .sobre-mi h2 {
+  display: flex;
+  justify-content: center;
+  font-family: "Source Code Pro", monospace;
   margin-left: 10px;
   color: white;
+}
+.famaf {
+  font-family: "Source Code Pro", monospace;
+  color: rgb(184, 224, 3);
 }
 
 .sobre-mi p {
   margin-left: 10px;
+  font-family: "Source Code Pro", monospace;
   color: white;
+}
+
+.sobre-mi span {
+  color: rgb(184, 224, 3);
+}
+
+/* Experiencia */
+
+.container-experience {
+  display: flex;
+  justify-content: center;
+}
+
+.experience-text {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+}
+
+.experience-text h2 {
+  color: white;
+  font-family: "Source Code Pro", monospace;
+}
+
+.experience {
+  width: 600px;
+  height: 300px;
+  background-color: rgb(18, 15, 44);
+  border-radius: 20px;
+  position: relative;
+}
+
+.experience:hover {
+  box-shadow: #cacaca 0px 0px 5px;
+  transition: 0.5s;
+}
+
+.experience:hover::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 5px;
+  background: #fdffff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #ffffff;
+  animation: followBorder 5s linear infinite;
+  transition: 0.5s;
+}
+
+@keyframes followBorder {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  25% {
+    top: 0;
+    left: 100%;
+    transform: translateX(-100%);
+  }
+  50% {
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
+  }
+  75% {
+    top: 100%;
+    left: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    top: 0;
+    left: 0;
+  }
+}
+
+/* Proyectos */
+
+.container-proyects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.proyectstext {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+}
+
+.proyectstext h2 {
+  color: white;
+  font-family: "Source Code Pro", monospace;
+  position: absolute;
+}
+
+.parent-experience {
+  display: flex;
+  justify-content: center;
+}
+
+.container-parent {
+  display: flex;
+  justify-content: center;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  gap: 8px;
+  width: 900px;
+  height: 1100px;
+}
+
+.div1 {
+  grid-row: span 5 / span 5;
+  background-color: rgb(18, 15, 44);
+  border-radius: 20px;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.div1:hover {
+  box-shadow: #cacaca 0px 0px 5px;
+  transition: 0.5s;
+}
+
+.div1:hover::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 5px;
+  background: #fdffff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #ffffff;
+  animation: followBorder 5s linear infinite;
+  transition: 0.5s;
+}
+
+.div1 span {
+  position: absolute;
+  font-size: 12px;
+  top: 11px;
+  left: 25px;
+  background: rgba(168, 151, 151, 0.377);
+  font-family: "Source Code Pro", monospace;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  z-index: 1;
+  padding: 5px;
+  border-radius: 40px;
+}
+
+.div1 img {
+  border-radius: 10px;
+  width: 400px;
+  height: 200px;
+  transition: 0.4s;
+  margin-top: 10px;
+}
+
+.div1:hover img {
+  transform: scale(1.03);
+  transition: 0.4s;
+  filter: brightness(1.5);
+}
+
+.calculator-div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.calculator-div h3 {
+  color: rgb(224, 255, 49);
+  font-family: "Source Code Pro", monospace;
+}
+
+.calculator-div p {
+  font-family: "Source Code Pro", monospace;
+  color: white;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+
+.calculator-div ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin-top: 70px;
+  padding: 0;
+}
+
+.calculator-div ul li {
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-family: "Source Code Pro", monospace;
+  background: rgba(142, 173, 29, 0.308);
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+}
+
+.div2 {
+  grid-row: span 5 / span 5;
+  background-color: rgb(18, 15, 44);
+  border-radius: 20px;
+  position: relative;
+}
+
+.div2:hover {
+  box-shadow: #cacaca 0px 0px 5px;
+  transition: 0.5s;
+}
+
+.div2:hover::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 5px;
+  background: #fdffff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #ffffff;
+  animation: followBorder 5s linear infinite;
+  transition: 0.5s;
+}
+
+.div3 {
+  grid-column: span 2 / span 2;
+  grid-row: span 4 / span 4;
+  grid-row-start: 6;
+  background-color: rgb(18, 15, 44);
+  border-radius: 20px;
+  position: relative;
+}
+
+.div3:hover {
+  box-shadow: #cacaca 0px 0px 5px;
+  transition: 0.5s;
+}
+
+.div3:hover::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 5px;
+  background: #fdffff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #ffffff;
+  animation: followBorder 5s linear infinite;
+  transition: 0.5s;
+}
+
+/* tecnologias */
+
+.tecnologias {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.tecnologias h2 {
+  color: white;
+  font-family: "Source Code Pro", monospace;
+}
+
+.container-technologies {
+  display: flex;
+  justify-content: center;
+}
+
+.parent2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  gap: 8px;
+  width: 900px;
+  height: 1100px;
+}
+
+.div4 {
+  grid-row: span 4 / span 4;
+  background-color: rgb(18, 15, 44);
+  border-radius: 20px;
+  position: relative;
+}
+
+.div4:hover {
+  box-shadow: #cacaca 0px 0px 5px;
+  transition: 0.5s;
+}
+
+.div4:hover::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 5px;
+  background: #fdffff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #ffffff;
+  animation: followBorder 5s linear infinite;
+  transition: 0.5s;
+}
+
+.div4 div {
+  display: flex;
+  justify-content: center;
+}
+
+.div4 div h2 {
+  font-size: 30px;
+  background: linear-gradient(90deg, #f0f0f0, #2a82b4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.div4 p {
+  color: white;
+  font-family: "Source Code Pro", monospace;
+}
+
+.container-divs {
+  display: flex;
+}
+
+.container-frontend {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.container-frontend img {
+  width: 50px;
+  margin-bottom: 8px;
+}
+
+.div5 {
+  grid-row: span 4 / span 4;
+  background-color: rgb(18, 15, 44);
+  border-radius: 20px;
+  position: relative;
+}
+
+.div5:hover {
+  box-shadow: #cacaca 0px 0px 5px;
+  transition: 0.5s;
+}
+
+.div5:hover::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 5px;
+  background: #fdffff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #ffffff;
+  animation: followBorder 5s linear infinite;
+  transition: 0.5s;
+}
+
+.div5 div {
+  display: flex;
+  justify-content: center;
+}
+
+.div5 div h2 {
+  font-size: 30px;
+  background: linear-gradient(90deg, #f0f0f0, #464747);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.div5 p {
+  color: white;
+  font-family: "Source Code Pro", monospace;
+}
+
+.div6 {
+  grid-row: span 4 / span 4;
+  grid-row-start: 5;
+  background-color: rgb(18, 15, 44);
+  border-radius: 20px;
+  position: relative;
+}
+
+.div6:hover {
+  box-shadow: #cacaca 0px 0px 5px;
+  transition: 0.5s;
+}
+
+.div6:hover::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 5px;
+  background: #fdffff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #ffffff;
+  animation: followBorder 5s linear infinite;
+  transition: 0.5s;
+}
+
+.div6 div {
+  display: flex;
+  justify-content: center;
+}
+
+.div6 div h2 {
+  font-size: 30px;
+  background: linear-gradient(90deg, #ce651f, #e2eef5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.div6 p {
+  color: white;
+  font-family: "Source Code Pro", monospace;
+}
+
+.div7 {
+  grid-row: span 4 / span 4;
+  grid-row-start: 5;
+  background-color: rgb(18, 15, 44);
+  border-radius: 20px;
+  position: relative;
+}
+
+.div7:hover {
+  box-shadow: #cacaca 0px 0px 5px;
+  transition: 0.5s;
+}
+
+.div7:hover::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 5px;
+  background: #fdffff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #ffffff;
+  animation: followBorder 5s linear infinite;
+  transition: 0.5s;
+}
+
+.div7 div {
+  display: flex;
+  justify-content: center;
+}
+
+.div7 div h2 {
+  font-size: 30px;
+  background: linear-gradient(90deg, #9e1010, #f8fcff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.div7 p {
+  color: white;
+  font-family: "Source Code Pro", monospace;
+}
+
+.container-contact {
+  display: flex;
+  justify-content: center;
+}
+
+.container-contact h2 {
+  display: flex;
+  justify-content: center;
+  font-family: "Source Code Pro", monospace;
+  color: white;
+}
+
+.container-contact p {
+  display: flex;
+  justify-content: center;
+  font-family: "Source Code Pro", monospace;
+  color: rgb(255, 255, 255);
+}
+
+.container-contact p a {
+  text-decoration: none;
+  color: rgb(184, 224, 3);
+}
+
+.contact {
+  border: solid white 1px;
+  border-radius: 10px;
+  width: 500px;
+  height: 100px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  color: white;
+  font-family: "Source Code Pro", monospace;
+  font-size: 12px;
+  margin-bottom: 40px;
 }
