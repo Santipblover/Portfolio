@@ -1,6 +1,10 @@
 html {
   scroll-behavior: smooth;
 }
+html,
+body {
+  overflow-x: hidden;
+}
 
 #myInfo,
 #myexperience,
@@ -11,20 +15,10 @@ html {
 }
 
 body {
-  background: linear-gradient(90deg, #054e26, #151518, #054e26);
+  background: linear-gradient(90deg, #020a24, #060622);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  animation: animated-gradient 5s infinite alternate;
-  background-size: 300% 100%;
   margin: 0;
-}
-@keyframes animated-gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
 }
 
 /* Header */
@@ -54,6 +48,7 @@ nav ul li a {
   text-decoration: none;
   color: rgb(214, 214, 214);
   font-family: "Source Code Pro", monospace;
+  transition: 0.3s;
 }
 
 nav ul li a:hover {
@@ -61,12 +56,6 @@ nav ul li a:hover {
   font-size: 16px;
   text-shadow: rgb(41, 40, 40) 3px 3px 3px;
   transition-duration: 0.2s;
-}
-
-nav ul li a:focus {
-  color: rgb(255, 255, 255);
-  text-shadow: rgb(41, 40, 40) 3px 3px 3px;
-  font-size: 17px;
 }
 
 .logo-header {
@@ -86,11 +75,30 @@ nav ul li a:focus {
   }
 }
 
+@media (max-width: 600px) {
+  .logo-header {
+    display: none;
+  }
+
+  nav ul {
+    justify-content: space-between;
+    padding: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  nav ul li a {
+    font-size: 12px;
+  }
+  nav ul li a:hover {
+    font-size: 14px;
+  }
+}
+
 /* Main */
 
 .info {
   position: relative;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,10 +119,16 @@ nav ul li a:focus {
   font-family: "Source Code Pro", monospace;
   color: rgb(255, 255, 255);
   margin: 0;
-  text-shadow: 3px 3px 2px rgb(0, 0, 0);
+  text-shadow: 3px 3px 2px rgb(4, 63, 117);
   position: absolute;
   top: 100px;
   animation: animation-title 2s;
+}
+
+@media (max-width: 600px) {
+  .info h1 {
+    font-size: 40px;
+  }
 }
 
 @keyframes animation-title {
@@ -147,7 +161,7 @@ nav ul li a:focus {
 
 @keyframes typing {
   from {
-    width: 0px;
+    width: 0ch;
   }
 }
 
@@ -175,7 +189,7 @@ nav ul li a:focus {
 }
 
 .button-cv:hover {
-  background: #161616;
+  background: #0c0e5c;
 }
 
 .button-cv img {
@@ -189,7 +203,7 @@ nav ul li a:focus {
   padding: 10px;
 }
 .logo {
-  width: 300px;
+  width: 250px;
   border-radius: 100%;
   box-shadow: 2px 6px 12px rgb(0, 0, 0);
 }
@@ -212,7 +226,7 @@ nav ul li a:focus {
 }
 
 .github:hover {
-  background-color: black;
+  background-color: rgb(43, 42, 42);
   transition: 0.2s;
 }
 
@@ -232,7 +246,7 @@ nav ul li a:focus {
 }
 
 .linkedin:hover {
-  background-color: black;
+  background-color: rgb(11, 33, 92);
   transition: 0.2s;
 }
 
@@ -313,6 +327,12 @@ nav ul li a:focus {
   transition: 0.5s;
 }
 
+@media (max-width: 768px) {
+  .experience {
+    width: 90%;
+  }
+}
+
 @keyframes followBorder {
   0% {
     top: 0;
@@ -388,6 +408,7 @@ nav ul li a:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 .div1:hover {
   box-shadow: #cacaca 0px 0px 5px;
@@ -440,6 +461,7 @@ nav ul li a:focus {
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 30px;
+  position: relative;
 }
 
 .calculator-div h3 {
@@ -465,7 +487,7 @@ nav ul li a:focus {
 
 .calculator-div ul li {
   border-radius: 30px;
-  padding: 10px 20px;
+  padding: 8px 8px;
   font-family: "Source Code Pro", monospace;
   background: rgba(142, 173, 29, 0.308);
   white-space: nowrap;
@@ -522,6 +544,51 @@ nav ul li a:focus {
   box-shadow: 2px 2px 10px #ffffff;
   animation: followBorder 5s linear infinite;
   transition: 0.5s;
+}
+
+@media (max-width: 768px) {
+  .container-parent {
+    width: 100%;
+  }
+
+  .parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .div1,
+  .div2,
+  .div3 {
+    max-width: 600px;
+    width: 90%;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  .div1 img {
+    width: 100%;
+    height: auto;
+  }
+
+  .calculator-div {
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  .calculator-div ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .calculator-div ul li {
+    font-size: 14px;
+  }
 }
 
 /* tecnologias */
@@ -736,6 +803,58 @@ nav ul li a:focus {
 .div7 p {
   color: white;
   font-family: "Source Code Pro", monospace;
+}
+
+@media (max-width: 768px) {
+  .container-technologies {
+    padding: 0 10px 10px;
+  }
+
+  .parent2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: auto;
+  }
+
+  .div4,
+  .div5,
+  .div6,
+  .div7 {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  .div4 div h2,
+  .div5 div h2,
+  .div6 div h2,
+  .div7 div h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .div4 p,
+  .div5 p,
+  .div6 p,
+  .div7 p {
+    font-size: 14px;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .container-divs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .container-frontend {
+    width: 80px;
+    margin-bottom: 10px;
+  }
 }
 
 .container-contact {
