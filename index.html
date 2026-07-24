@@ -17,14 +17,20 @@
     <title>Santiago Garcia - Portfolio</title>
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          <img
-            src="images/icon-nav.png"
-            alt="icon-header"
-            class="logo-header"
-          />
+    <header class="header">
+      <nav class="navbar">
+        <a href="#" class="logo-link">
+          <img src="images/icon-nav.png" alt="icon-header" class="logo-header" />
+        </a>
+
+        <!-- Botón del menú hamburguesa -->
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+
+        <ul class="nav-links">
           <li><a href="#myInfo">About Me</a></li>
           <li><a href="#myexperience">Experience</a></li>
           <li><a href="#proyectos">Projects</a></li>

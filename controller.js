@@ -53,3 +53,26 @@ function showDownloadMessage() {
         }
     }, 3000);
 }
+
+// Lógica del menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('#mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+        // Abrir y cerrar menú al tocar la hamburguesa
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('is-active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar el menú automáticamente al tocar cualquier enlace
+        const links = document.querySelectorAll('.nav-links li a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('is-active');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+});

@@ -29,75 +29,140 @@ body {
 }
 
 /* Header */
-header {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 60px;
-  top: 16px;
+.header {
+  background: rgba(255, 255, 255, 0.05); /* Fondo un poquito más sutil */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Un borde súper fino le da el toque premium */
+  border-radius: 40px;
   position: sticky;
+  top: 20px; /* Despegado del techo */
   z-index: 10;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-}
-nav {
-  top: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Magia para hacerlo tipo píldora centrada */
+  max-width: 800px;
+  margin: 0 auto; 
+  padding: 0 20px;
 }
 
-nav ul {
-  list-style: none;
+.navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; /* Separa el logo a la izq y los links a la der */
   align-items: center;
-  height: 50px;
+  height: 60px;
 }
 
-nav ul li a {
-  font-size: 14px;
-  text-decoration: none;
-  color: rgb(214, 214, 214);
-  font-family: "Source Code Pro", monospace;
-  transition: 0.3s;
-}
-
-nav ul li a:hover {
-  color: rgb(255, 255, 255);
-  font-size: 16px;
-  text-shadow: rgb(41, 40, 40) 3px 3px 3px;
-  transition-duration: 0.2s;
-}
-
+/* Logo */
 .logo-header {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  left: 20px;
-  animation: rotacion 5s linear infinite;
+  width: 35px;
+  height: 35px;
+  animation: rotacion 5s linear infinite; /* Esto vuelve a activar el giro constante */
 }
 
 @keyframes rotacion {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-@media (max-width: 600px) {
-  .logo-header {
-    display: none;
+.logo-link:hover .logo-header {
+  transform: rotate(360deg); 
+}
+
+/* Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px; /* gap es mucho mejor que space-around porque mantiene la distancia fija */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  font-size: 15px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6); /* Gris clarito por defecto */
+  font-family: "Source Code Pro", monospace;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #ffffff; /* Blanco puro al pasar el mouse */
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5); /* Efecto de brillo sin romper la estructura */
+}
+
+/* Estilos del botón hamburguesa (Oculto en PC) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 100;
+}
+
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive básico para celulares */
+@media (max-width: 768px) {
+  .header {
+    border-radius: 0;
+    top: 0;
+    padding: 0 20px; /* Le damos un poco de aire a los costados */
+  }
+  
+  /* Mostramos la hamburguesa */
+  .menu-toggle {
+    display: flex; 
   }
 
-  nav ul {
-    justify-content: space-between;
-    padding: 0;
-    margin-left: 5px;
-    margin-right: 5px;
+  /* Transformamos la barra horizontal en un menú vertical oculto */
+  .nav-links {
+    position: absolute;
+    top: 60px; /* Empieza justo debajo de la barra */
+    left: 0;
+    width: 100%;
+    background: rgba(2, 10, 36, 0.98); /* Color oscuro del fondo de tu web */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    flex-direction: column;
+    text-align: center;
+    gap: 0;
+    /* Ocultamos el menú subiéndolo fuera de la pantalla */
+    transform: translateY(-150%);
+    transition: transform 0.4s ease-in-out;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.5);
   }
-  nav ul li a {
-    font-size: 12px;
+
+  /* Esta clase se la va a inyectar JavaScript al hacer clic */
+  .nav-links.active {
+    transform: translateY(0);
   }
-  nav ul li a:hover {
-    font-size: 14px;
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  /* Animación súper prolija: la hamburguesa se transforma en una "X" */
+  .menu-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .menu-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
 }
 
