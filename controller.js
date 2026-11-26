@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function downloadCV() {
     // Ruta al archivo PDF (ajusta el nombre del archivo según tu CV)
-    const cvPath = 'documents/Santiago-Garcia-CV.pdf_2025_5_18.pdf';
+    const cvPath = 'documents/Santiago-GarciaCV.pdf';
     
     // Crear un enlace temporal para la descarga
     const link = document.createElement('a');
